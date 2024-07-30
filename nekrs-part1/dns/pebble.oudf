@@ -1,0 +1,6 @@
+void velocityDirichletConditions(bcData *bc)
+{
+  bc->u = 0.0; // x-velocity
+  bc->v = 0.0; // y-velocity
+  bc->w = p_my_inlet_v; // z-velocity
+}
