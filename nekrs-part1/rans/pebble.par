@@ -1,11 +1,18 @@
 [OCCA]
   backend = CPU
 
+[MESH]
+  file = ../pebble.re2
+
 [GENERAL]
-  polynomialOrder = 5
-  numSteps = 8000
-  dt = targetCFL=2.0 + initial=1e-4
-  writeInterval = 1000
+  startFrom = "../dns/pebble0.f00005"
+  polynomialOrder = 7
+  numSteps = 50000
+  dt = 5e-3
+  writeInterval = 2000
+
+[PROBLEMTYPE]
+  stressFormulation = true
 
 [PRESSURE]
   residualTol = 1e-06
@@ -13,11 +20,17 @@
 [VELOCITY]
   boundaryTypeMap = v, o, W, sym
   residualTol = 1e-07
-  density = 1000.0
-  viscosity = 1e-3
+  density = 1.0
+  viscosity = -1000
 
-[TEMPERATURE]
-  boundaryTypeMap = t, I, f, I
-  rhoCp = 4186000
-  conductivity = 0.6
-  residualTol = 1e-07
+[SCALAR00] # k
+  boundaryTypeMap = t, o, t, sym
+  residualTol= 1e-07
+  rho = 1.0
+  viscosity = -1000
+
+[SCALAR02] # tau
+  boundaryTypeMap = t, o, t, sym
+  residualTol= 1e-07
+  rho = 1.0
+  viscosity = -1000
