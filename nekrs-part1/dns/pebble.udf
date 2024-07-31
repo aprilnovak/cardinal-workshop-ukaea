@@ -1,14 +1,21 @@
 #include "udf.hpp"
 
 static dfloat inlet_v;
+static dfloat inlet_T;
 
 void UDF_LoadKernels(occa::properties & kernelInfo)
 {
-  // get parameter from .par file
-  platform->par->extract("casedata", "my_inlet_v", inlet_v);
+  // get parameters from .par file
+  dfloat D;
+  dfloat Re;
+  platform->par->extract("casedata", "D", D);
+  platform->par->extract("casedata", "Re", Re);
+  platform->par->extract("casedata", "inlet_T", inlet_T);
 
   // send parameter to device
-  kernelInfo["defines/p_my_inlet_v"] = inlet_v;
+  inlet_v = Re * 2e-5 / D / 0.1785;
+  kernelInfo["defines/p_inlet_v"] = inlet_v;
+  kernelInfo["defines/p_inlet_T"] = inlet_T;
 }
 
 void UDF_Setup(nrs_t *nrs)
@@ -23,6 +30,8 @@ void UDF_Setup(nrs_t *nrs)
     nrs->U[n + 2 * nrs->fieldOffset] = inlet_v; // z-velocity
 
     nrs->P[n] = 0.0; // pressure
+
+    nrs->cds->S[n + 0 * nrs->fieldOffset] = inlet_T; // temperature
   }
 }
 
