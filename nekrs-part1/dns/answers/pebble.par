@@ -5,7 +5,7 @@
   file = ../pebble.re2
 
 [GENERAL]
-  polynomialOrder = 5
+  polynomialOrder = 3
   numSteps = 4000
   dt = targetCFL=2.0 + initial=1e-4
   writeInterval = 500
