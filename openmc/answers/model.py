@@ -95,7 +95,7 @@ source.energy = openmc.stats.Discrete([14.08e6], [1.0])
 source.space=spatial_dist
 model.settings.source = source
 
-dagmc_univ = openmc.DAGMCUniverse(filename='tokamak.h5m')
+dagmc_univ = openmc.DAGMCUniverse(filename='../tokamak.h5m')
 model.geometry = openmc.Geometry(root=dagmc_univ)
 
 model.export_to_xml()

@@ -1,7 +1,7 @@
 [Mesh]
   [file]
     type = FileMeshGenerator
-    file = tokamak.e
+    file = ../tokamak.e
   []
 []
 
@@ -11,7 +11,7 @@
   scaling = 100.0
 
   tally_type = mesh
-  mesh_template = tokamak.e
+  mesh_template = ../tokamak.e
   tally_score = 'heating_local H3_production'
   source_strength = 2e18
 
