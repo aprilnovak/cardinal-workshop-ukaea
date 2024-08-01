@@ -15,7 +15,9 @@
   tally_score = 'heating_local H3_production'
   source_strength = 2e18
 
-  particles = 1000
+  # this is a low number of particles; you will want to increase in order to obtain
+  # high-quality results
+  particles = 100
 []
 
 [Postprocessors]

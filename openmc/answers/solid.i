@@ -1,7 +1,7 @@
 [Mesh]
   [file]
     type = FileMeshGenerator
-    file = tokamak.e
+    file = ../tokamak.e
   []
   [add_outer_sideset]
     type = SideSetsAroundSubdomainGenerator
