@@ -5,13 +5,10 @@
   file = ../pebble.re2
 
 [GENERAL]
-  startFrom = load.fld
-  polynomialOrder = 10
-  numSteps = 50000
-  dt = 5e-4
-  writeInterval = 25000
-
-  regularization = hpfrt + nModes=2 + scalingCoeff=5
+  polynomialOrder = 3
+  numSteps = 4000
+  dt = targetCFL=2.0 + initial=1e-4
+  writeInterval = 500
 
 [PRESSURE]
   residualTol = 1e-06
@@ -19,11 +16,16 @@
 [VELOCITY]
   boundaryTypeMap = v, o, W, sym
   residualTol = 1e-07
-  density = 1.0
-  viscosity = -2000
+  density = 1000.0
+  viscosity = 1e-3
 
 [TEMPERATURE]
   boundaryTypeMap = t, o, f, I
   residualTol = 1e-07
-  rhoCp = 1.0
-  conductivity = -13940
+  rhoCp = 4186000
+  conductivity = 0.6
+
+[CASEDATA]
+  Re = 50
+  D = 0.03
+  inlet_T = 0
