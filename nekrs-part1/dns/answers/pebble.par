@@ -2,7 +2,7 @@
   backend = CPU
 
 [MESH]
-  file = ../pebble.re2
+  file = ../../pebble.re2
 
 [GENERAL]
   polynomialOrder = 3
