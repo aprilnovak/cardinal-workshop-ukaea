@@ -6,7 +6,7 @@
 
 [GENERAL]
   polynomialOrder = 5
-  numSteps = 2000
+  numSteps = 4000
   dt = targetCFL=2.0 + initial=1e-4
   writeInterval = 500
 
@@ -16,16 +16,16 @@
 [VELOCITY]
   boundaryTypeMap = v, o, W, sym
   residualTol = 1e-07
-  density = 0.1785
-  viscosity = 2e-5
+  density = 1000.0
+  viscosity = 1e-3
 
 [TEMPERATURE]
   boundaryTypeMap = t, o, f, I
   residualTol = 1e-07
-  rhoCp = 926.415
-  conductivity = 0.1513
+  rhoCp = 4186000
+  conductivity = 0.6
 
 [CASEDATA]
   Re = 50
   D = 0.03
-  inlet_T = 500
+  inlet_T = 0

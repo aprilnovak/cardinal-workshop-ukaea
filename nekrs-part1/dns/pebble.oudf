@@ -12,5 +12,6 @@ void scalarDirichletConditions(bcData *bc)
 
 void scalarNeumannConditions(bcData *bc)
 {
-  bc->flux = 78369;
+  // power divided by sphere surface area
+  bc->flux = 315892;
 }

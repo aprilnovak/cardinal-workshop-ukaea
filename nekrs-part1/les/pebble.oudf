@@ -4,3 +4,14 @@ void velocityDirichletConditions(bcData *bc)
   bc->v = 0.0; // y-velocity
   bc->w = 1.0; // z-velocity
 }
+
+void scalarDirichletConditions(bcData *bc)
+{
+  bc->s = 0.0; // temperature
+}
+
+void scalarNeumannConditions(bcData *bc)
+{
+  // nondimensional heat flux is heat flux / (density * V * Cp * dT)
+  bc->flux = 315892 / (p_rho_Cp * p_inlet_v * 1.25);
+}

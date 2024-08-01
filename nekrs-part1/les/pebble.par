@@ -5,11 +5,11 @@
   file = ../pebble.re2
 
 [GENERAL]
-  startFrom = "../dns/pebble0.f00005"
-  polynomialOrder = 9
+  startFrom = load.fld
+  polynomialOrder = 10
   numSteps = 50000
   dt = 5e-4
-  writeInterval = 2000
+  writeInterval = 25000
 
   regularization = hpfrt + nModes=2 + scalingCoeff=5
 
@@ -21,3 +21,9 @@
   residualTol = 1e-07
   density = 1.0
   viscosity = -2000
+
+[TEMPERATURE]
+  boundaryTypeMap = t, o, f, I
+  residualTol = 1e-07
+  rhoCp = 1.0
+  conductivity = -13940

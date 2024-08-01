@@ -6,14 +6,15 @@ static dfloat inlet_T;
 void UDF_LoadKernels(occa::properties & kernelInfo)
 {
   // get parameters from .par file
-  dfloat D;
-  dfloat Re;
+  dfloat D, Re, mu, rho;
   platform->par->extract("casedata", "D", D);
   platform->par->extract("casedata", "Re", Re);
   platform->par->extract("casedata", "inlet_T", inlet_T);
+  platform->options.getArgs("VISCOSITY", mu);
+  platform->options.getArgs("DENSITY", rho);
 
   // send parameter to device
-  inlet_v = Re * 2e-5 / D / 0.1785;
+  inlet_v = Re * mu / D / rho;
   kernelInfo["defines/p_inlet_v"] = inlet_v;
   kernelInfo["defines/p_inlet_T"] = inlet_T;
 }
