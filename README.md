@@ -14,4 +14,4 @@ Open the URL [http://0.0.0.0:8080/](http://0.0.0.0:8080/) in the browser
 
 The webpage will prompt you for a password and this can be found printed to the terminal
 
-Then naviage to the ```/workshop``` directory within the Jupyter instance running in the browser
+Then use the open folder button and open the ```/workdir``` folder within the Jupyter instance running in the browser
