@@ -8,15 +8,20 @@
 [Problem]
   type = NekRSProblem
   casename = 'pebble'
+  n_usrwrk_slots = 1
 
+  # data passing between nek.i and NekRS internal data structures
   [FieldTransfers]
     [flux]
-      type = NekBoundaryFlux
+    # used to write a wall flux into nekrs, automatically creates an AuxVariable named flux 
+    # and postprocessor named flux_integral 
+      type = NekBoundaryFlux 
       direction = to_nek
       usrwrk_slot = 0
     []
     [temperature]
-      type = NekFieldVariable
+    # used to get temperature from NekRS and write it into an AuxVariable named temperature
+      type = NekFieldVariable 
       direction = from_nek
     []
   []
@@ -32,20 +37,20 @@
 
 [UserObjects]
   [layered_bin]
-    type = LayeredBin
+    type = LayeredBin # creates spatial bin for layers in a specified direction
     num_layers = 5
     direction = z
   []
   [wall_temp]
-    type = NekBinnedSideAverage
+    type = NekBinnedSideAverage # computed the side average of temperature at the pebble boundary 
     bins = 'layered_bin'
     boundary = '3'
     field = temperature
-    map_space_by_qp = true
-    interval = 10
+    map_space_by_qp = true # map the NekRS spatial domain to the bin according to the qp
+    interval = 10 # every 10 time steps
   []
   [bulk_temp]
-    type = NekBinnedVolumeAverage
+    type = NekBinnedVolumeAverage # not evaluated on the NekRSMesh mesh mirror
     bins = 'layered_bin'
     field = temperature
     map_space_by_qp = true
@@ -67,6 +72,6 @@
 [Outputs]
   exodus = true
   csv = true
-  interval = 10
+  interval = 100
   hide = 'flux_integral'
 []

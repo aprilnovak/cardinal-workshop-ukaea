@@ -8,6 +8,7 @@
 [Problem]
   type = NekRSProblem
   casename = 'pebble'
+  n_usrwrk_slots = 1
 
   # data passing between nek.i and NekRS internal data structures
   [FieldTransfers]
